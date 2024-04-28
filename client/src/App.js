@@ -1,11 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './components/Home';
 import Projects from './components/Projects';
 import Login from './components/Login';
 import { CssBaseline, createTheme, ThemeProvider } from '@material-ui/core';
 
-// Create a theme instance.
 const theme = createTheme({
   palette: {
     background: {
@@ -15,17 +14,23 @@ const theme = createTheme({
 });
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check for authentication status, perhaps by verifying token or session
+    const token = sessionStorage.getItem('userToken');
+    setIsAuthenticated(!!token);
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <div style={{ backgroundColor: theme.palette.background.default, minHeight: '100vh' }}>
-          <Routes>
-            <Route path="/" element={<Home />} exact />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={isAuthenticated ? <Home /> : <Navigate to="/login" />} />
+          <Route path="/projects" element={isAuthenticated ? <Projects /> : <Navigate to="/login" />} />
+          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        </Routes>
       </Router>
     </ThemeProvider>
   );
