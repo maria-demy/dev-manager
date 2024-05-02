@@ -16,7 +16,7 @@ Key Features:
 Technologies:
 
 - Frontend: React with Material-UI for the UI components and MobX for state management.
-- Backend: Node.js with Express for RESTful API services; alternatively, you can use Spring Boot if you prefer Java.
+- Backend: Node.js with Express for RESTful API services; 
 - Database: MongoDB for flexible data storage, and PostgreSQL for structured data like user accounts and project details.
 - Cloud: AWS EC2 for hosting the application, S3 for storing any uploaded documents or images, and Lambda for any serverless computing needs.
 - Tools & Platforms: Docker for containerizing the application, Jenkins for continuous integration and deployment, and Git for version control.
