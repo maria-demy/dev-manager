@@ -3,9 +3,9 @@
   "name": "Dev Project Manager",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon-test.svg",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/svg+xml"
     },
     {
       "src": "logo192.png",
